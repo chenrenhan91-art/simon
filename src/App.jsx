@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 
-const asset = (name) => `/assets/${name}.jpg`;
+const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}.jpg`;
 
 const products = [
   { id: 1, name: "Twist Harvest Object", note: "3 SIZES AVAILABLE", image: "0f63bbdacc5b6c1b", badge: "BEST SELLER" },
