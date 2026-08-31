@@ -1,0 +1,5 @@
+node_modules/
+dist/
+qa/
+design-qa.md
+.DS_Store
