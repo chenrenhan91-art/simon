@@ -5,13 +5,14 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const collectionEntries = ["fall-gathering-and-gifting", "fall-decor", "drinkware", "stemware", "cocktail-glasses", "vases", "candlelight", "trees", "bowls"];
+const productEntries = ["pumpkin-twist", "nantucket-hurricane", "dorset-coupe-in-gift-box-set-of-2", "barre-organic-platter", "crackle-pumpkin", "cavendish-candlestick"];
 
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? "/simon/" : "/",
   build: {
     outDir: "dist/client",
     rollupOptions: {
-      input: Object.fromEntries([["home", resolve(projectRoot, "index.html")], ...collectionEntries.map((slug) => [slug, resolve(projectRoot, `collections/${slug}/index.html`)])]),
+      input: Object.fromEntries([["home", resolve(projectRoot, "index.html")], ...collectionEntries.map((slug) => [slug, resolve(projectRoot, `collections/${slug}/index.html`)]), ...productEntries.map((slug) => [slug, resolve(projectRoot, `products/${slug}/index.html`)])]),
     },
   },
   optimizeDeps: {
