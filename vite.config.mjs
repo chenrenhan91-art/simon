@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
-const collectionEntries = ["fall-gathering-and-gifting", "fall-decor", "drinkware", "stemware", "cocktail-glasses", "vases", "candlelight", "trees", "bowls"];
+const collectionEntries = ["new-arrivals", "fall-gathering-and-gifting", "fall-decor", "drinkware", "stemware", "cocktail-glasses", "vases", "candlelight", "trees", "bowls"];
 const productEntries = ["pumpkin-twist", "nantucket-hurricane", "dorset-coupe-in-gift-box-set-of-2", "barre-organic-platter", "crackle-pumpkin", "cavendish-candlestick"];
 
 export default defineConfig({
