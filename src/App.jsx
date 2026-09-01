@@ -30,12 +30,43 @@ const menuGroups = {
 };
 
 const categoryCards = [
-  ["Table Objects", "92036cfcb284ad1a"], ["Stemware", "2e95cc14fdaa5452"], ["Cocktail", "18a2cc3f9d7b9e31"], ["Vessels", "d3947d37a8a9035c"],
-  ["Candlelight", "4a3d2f3c0204eb96"], ["Seasonal", "321172c50d62fef5"], ["Barware", "c277079ed4e9e689"], ["Bowls", "f0708ec291891aed"],
+  ["Fall Decor", "92036cfcb284ad1a", "fall-decor"], ["Stemware", "2e95cc14fdaa5452", "stemware"], ["Cocktail", "18a2cc3f9d7b9e31", "cocktail-glasses"], ["Vessels", "d3947d37a8a9035c", "vases"],
+  ["Candlelight", "4a3d2f3c0204eb96", "candlelight"], ["Seasonal", "321172c50d62fef5", "trees"], ["Barware", "c277079ed4e9e689", "drinkware"], ["Bowls", "f0708ec291891aed", "bowls"],
 ];
+
+const collectionPages = {
+  "fall-gathering-and-gifting": { title: "Fall Gathering & Gifting", description: "Objects selected for tables, thoughtful gifts, and the gatherings that bring people together.", image: "1afa6a0dbb1c99c0" },
+  "fall-decor": { title: "Fall Decor", description: "Warm tones, organic forms, and handmade details that set the season before it arrives.", image: "755670267b45bb05" },
+  drinkware: { title: "Drinkware", description: "Glasses for everyday pours and seasonal gatherings, including our new vintage-inspired Dorset Collection.", image: "2f4154ed7507563f" },
+  stemware: { title: "Stemware", description: "Glassware made for shared meals, toasts, and the details worth lingering over.", image: "2e95cc14fdaa5452" },
+  "cocktail-glasses": { title: "Cocktail Glasses", description: "Considered forms for everything poured and passed around the table.", image: "18a2cc3f9d7b9e31" },
+  vases: { title: "Vases", description: "Sculptural vessels for branches, blooms, and everyday arrangements.", image: "d3947d37a8a9035c" },
+  candlelight: { title: "Candlelight", description: "Illuminate the table with pieces designed for a softer kind of evening.", image: "4a3d2f3c0204eb96" },
+  trees: { title: "Seasonal", description: "Seasonal objects made to return to the table year after year.", image: "321172c50d62fef5" },
+  bowls: { title: "Bowls", description: "Serving pieces for the centre of the table and the everyday in between.", image: "f0708ec291891aed" },
+};
+
+const sitePath = (path = "/") => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
+function currentCollectionSlug() {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const path = basePath && window.location.pathname.startsWith(basePath) ? window.location.pathname.slice(basePath.length) : window.location.pathname;
+  const [section, slug] = path.replace(/^\/+|\/+$/g, "").split("/");
+  return section === "collections" && slug ? slug : null;
+}
 
 function Wordmark() {
   return <span className="wordmark">KEBEDA</span>;
+}
+
+function CollectionPage({ slug }) {
+  const collection = collectionPages[slug];
+  if (!collection) return null;
+  return <div className="collection-page-shell">
+    <header className="collection-header"><a className="collection-home" href={sitePath("/")}><Wordmark /></a><a className="collection-back" href={sitePath("/")}>BACK TO HOME</a></header>
+    <main className="collection-page-main"><section className="collection-intro"><p>COLLECTION</p><h1>{collection.title}</h1><p>{collection.description}</p></section><section className="collection-hero"><img src={asset(collection.image)} alt="" /></section><section className="collection-products" aria-label={`${collection.title} products`}>{products.slice(0, 4).map((product) => <article className="collection-product" key={product.id}><img src={asset(product.image)} alt={product.name} /><h2>{product.name}</h2><p>{product.note}</p><button className="text-button" type="button">VIEW DETAILS</button></article>)}</section></main>
+    <footer className="collection-footer"><span>© 2026 KEBEDA TRADING LIMITED</span><a href="tel:+85255096464">+852 55096464</a></footer>
+  </div>;
 }
 
 function CategoryMenu({ selected, onSelect, mobile = false }) {
@@ -52,7 +83,7 @@ function CategoryMenu({ selected, onSelect, mobile = false }) {
   </div>;
 }
 
-export function App() {
+function Storefront() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const [activeCategory, setActiveCategory] = useState("Gifts");
@@ -98,14 +129,19 @@ export function App() {
     {menuOpen && <div className="mobile-menu" role="dialog" aria-label="Mobile navigation"><div className="mobile-menu-top"><button className="icon-link" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={27} /></button><Wordmark /><span /></div><form className="mobile-search" onSubmit={(event) => { event.preventDefault(); setMenuOpen(false); scrollToCollection(); }}><Search size={18} /><input aria-label="Search our collection" placeholder="SEARCH OUR COLLECTION" /></form><CategoryMenu selected={activeCategory} onSelect={setActiveCategory} mobile /><div className="mobile-menu-links"><a href="#collection" onClick={() => setMenuOpen(false)}>NEW ARRIVALS</a><a href="#contact" onClick={() => setMenuOpen(false)}>CONTACT</a><a href="#about" onClick={() => setMenuOpen(false)}>ABOUT US</a></div></div>}
 
     <main id="top">
-      <section className="hero"><picture><source media="(max-width: 700px)" srcSet={asset("353f47e500aff43d")} /><img src={asset("1afa6a0dbb1c99c0")} alt="A warmly laid table with hand-finished glass objects" /></picture><div className="hero-copy"><p>Fall Gathering &amp; Gifting</p><h1>A Season Worth<br />Getting Ready For</h1><a className="button button-light" href="#collection">SHOP NOW</a></div></section>
+      <section className="hero"><picture><source media="(max-width: 700px)" srcSet={asset("353f47e500aff43d")} /><img src={asset("1afa6a0dbb1c99c0")} alt="A warmly laid table with hand-finished glass objects" /></picture><div className="hero-copy"><p>Fall Gathering &amp; Gifting</p><h1>A Season Worth<br />Getting Ready For</h1><a className="button button-light" href={sitePath("/collections/fall-gathering-and-gifting/")}>SHOP NOW</a></div></section>
       <section className="collection-section" id="collection"><div className="section-heading"><h2>For the table, the bar, and the home</h2><div className="carousel-arrows"><button disabled={productIndex === 0} onClick={() => setProductIndex((value) => Math.max(0, value - 1))} aria-label="Previous products"><ArrowLeft size={23} /></button><button disabled={productIndex === 2} onClick={() => setProductIndex((value) => Math.min(2, value + 1))} aria-label="Next products"><ArrowRight size={23} /></button></div></div><div className="product-window"><div className="product-track" style={{ "--product-index": productIndex }}>{products.map((product) => <article className="product-card" key={product.id}><div className="product-image"><span className="product-badge">{product.badge}</span><button className="like-button" aria-label={`Save ${product.name}`} onClick={() => toggleLike(product.id)}><Heart size={22} fill={likes.includes(product.id) ? "currentColor" : "none"} /></button><img src={asset(product.image)} alt={product.name} /><button className="quick-add" onClick={() => addToCart(product.id)} aria-label={`Add ${product.name} to bag`}><Plus size={23} /></button></div><h3>{product.name}</h3><p>{product.note}</p><button className="text-button" onClick={() => addToCart(product.id)}>ADD TO BAG</button></article>)}</div></div><a className="underlined-link" href="#category">VIEW ALL OBJECTS</a></section>
-      <section className="story-pairs" id="about"><article><img src={asset("755670267b45bb05")} alt="Hand-finished clear glass object" /><div><h2>Fall Decor</h2><p>Warm tones, organic forms, and handmade details that set the season before it arrives.</p><a className="button button-outline" href="#category">SHOP NOW</a></div></article><article><img src={asset("2f4154ed7507563f")} alt="Cocktail glasses on a serving tray" /><div><h2>Drinkware</h2><p>Glasses for everyday pours and seasonal gatherings, including our new vintage-inspired Dorset Collection.</p><a className="button button-outline" href="#category">SHOP NOW</a></div></article></section>
-      <section className="category-section" id="category"><h2>Shop by category</h2><div className="category-grid">{categoryCards.map(([title, image]) => <a className="category-card" href="#collection" key={title}><img src={asset(image)} alt="" /><span>SHOP NOW</span><strong>{title}</strong></a>)}</div></section>
+      <section className="story-pairs" id="about"><article><img src={asset("755670267b45bb05")} alt="Hand-finished clear glass object" /><div><h2>Fall Decor</h2><p>Warm tones, organic forms, and handmade details that set the season before it arrives.</p><a className="button button-outline" href={sitePath("/collections/fall-decor/")}>SHOP NOW</a></div></article><article><img src={asset("2f4154ed7507563f")} alt="Cocktail glasses on a serving tray" /><div><h2>Drinkware</h2><p>Glasses for everyday pours and seasonal gatherings, including our new vintage-inspired Dorset Collection.</p><a className="button button-outline" href={sitePath("/collections/drinkware/")}>SHOP NOW</a></div></article></section>
+      <section className="category-section" id="category"><h2>Shop by category</h2><div className="category-grid">{categoryCards.map(([title, image, slug]) => <a className="category-card" href={sitePath(`/collections/${slug}/`)} key={title}><img src={asset(image)} alt="" /><span>SHOP NOW</span><strong>{title}</strong></a>)}</div></section>
       <section className="contact-feature" id="contact"><img src={asset("0ed1ba2b25791f04")} alt="Autumn landscape and waterside building" /><div className="contact-overlay"><p>KEBEDA TRADING LIMITED</p><h2>Let's make space for the next good thing.</h2><div className="contact-details"><a href="tel:+85255096464">+852 55096464</a><address>WORKSHOP 251 ON 3RD FLOOR,<br />JOIN-IN HANG SING CENTRE,<br />NOS. 2-16 KWAI FUNG CRESCENT, KWAI CHUNG<br />HONG KONG</address></div></div></section>
     </main>
     <footer className="site-footer"><div className="newsletter"><h2>Stay in the loop</h2><p>Occasional notes on new objects, collections, and company news.</p><form onSubmit={(event) => { event.preventDefault(); setNewsletterStatus("Thank you — you're on the list."); }}><label className="sr-only" htmlFor="newsletter-email">Email address</label><input id="newsletter-email" type="email" required placeholder="EMAIL ADDRESS" /><button type="submit">SIGN UP</button></form>{newsletterStatus && <p className="status-message" role="status">{newsletterStatus}</p>}</div><div className="footer-grid"><div><Wordmark /><p className="footer-company">KEBEDA TRADING LIMITED</p></div><div><h3>COLLECTION</h3><a href="#collection">New arrivals</a><a href="#collection">Table objects</a><a href="#collection">Drinkware</a><a href="#category">All categories</a></div><div><h3>COMPANY</h3><a href="#about">About us</a><a href="#contact">Contact</a><a href="tel:+85255096464">Call us</a></div><div><h3>ADDRESS</h3><p>WORKSHOP 251 ON 3RD FLOOR,<br />JOIN-IN HANG SING CENTRE,<br />NOS. 2-16 KWAI FUNG CRESCENT, KWAI CHUNG<br />HONG KONG</p></div></div><div className="footer-base"><span>© 2026 KEBEDA TRADING LIMITED</span><span>PRIVACY · TERMS</span></div></footer>
     {cartOpen && <aside className="cart-drawer" aria-label="Shopping bag"><div className="cart-head"><h2>BAG ({cartTotal})</h2><button className="icon-link" onClick={() => setCartOpen(false)} aria-label="Close shopping bag"><X size={25} /></button></div>{cartItems.length === 0 ? <div className="empty-cart"><ShoppingBag size={37} strokeWidth={1.2} /><h3>Your bag is empty.</h3><p>Add an object to begin your collection.</p><button className="button button-dark" onClick={() => setCartOpen(false)}>CONTINUE SHOPPING</button></div> : <><div className="cart-items">{cartItems.map((item) => <div className="cart-item" key={item.id}><img src={asset(item.image)} alt="" /><div><h3>{item.name}</h3><p>{item.note}</p><div className="quantity"><button onClick={() => updateQuantity(item.id, -1)} aria-label={`Remove one ${item.name}`}><Minus size={14} /></button><span>{item.quantity}</span><button onClick={() => updateQuantity(item.id, 1)} aria-label={`Add one ${item.name}`}><Plus size={14} /></button></div></div></div>)}</div><button className="button button-dark checkout-button" onClick={() => setCartOpen(false)}>CONTINUE</button></>}</aside>}
     {(cartOpen || menuOpen) && <button className="screen-dim" aria-label="Close overlay" onClick={() => { setCartOpen(false); setMenuOpen(false); }} />}
   </div>;
+}
+
+export function App() {
+  const slug = currentCollectionSlug();
+  return slug && collectionPages[slug] ? <CollectionPage slug={slug} /> : <Storefront />;
 }
