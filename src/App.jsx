@@ -24,6 +24,18 @@ const products = [
   { id: 6, name: "Tall Candlelight", note: "2 SIZES AVAILABLE", image: "7e30cc2c199ecefe", badge: "FEATURED", slug: "cavendish-candlestick" },
 ];
 
+const categoryProducts = [
+  { id: 101, name: "Madison Stemware Pair", note: "SET OF 2", image: "2e95cc14fdaa5452", badge: "BEST SELLER", slug: "madison-stemware-pair" },
+  { id: 102, name: "Greenwich Cocktail Glass", note: "SET OF 2", image: "18a2cc3f9d7b9e31", badge: "NEW", slug: "greenwich-cocktail-glass" },
+  { id: 103, name: "Woodstock Globe Vase", note: "2 SIZES AVAILABLE", image: "d3947d37a8a9035c", badge: "FEATURED", slug: "woodstock-globe-vase" },
+  { id: 104, name: "Candlelight Hurricane", note: "3 SIZES AVAILABLE", image: "4a3d2f3c0204eb96", badge: "BEST SELLER", slug: "candlelight-hurricane" },
+  { id: 105, name: "Evergreen Tree", note: "3 SIZES AVAILABLE", image: "321172c50d62fef5", badge: "SEASONAL", slug: "evergreen-tree" },
+  { id: 106, name: "Barware Tumbler Set", note: "SET OF 2", image: "c277079ed4e9e689", badge: "FEATURED", slug: "barware-tumbler-set" },
+  { id: 107, name: "Barre Serving Bowl", note: "2 SIZES AVAILABLE", image: "f0708ec291891aed", badge: "NEW", slug: "barre-serving-bowl" },
+];
+
+const allProducts = [...products, ...categoryProducts];
+
 const productCatalog = {
   "pumpkin-twist": { price: "$140.00", sizes: ["S", "M", "L"], gallery: ["0f63bbdacc5b6c1b", "755670267b45bb05", "92036cfcb284ad1a"], description: "A sculptural glass object with a generous, gathered silhouette. Made to hold a place at the centre of a table or an entryway.", details: ["Hand-finished using traditional glassworking techniques.", "Material: Glass", "Made in: Hong Kong", "Wipe with a soft, dry cloth."] },
   "nantucket-hurricane": { price: "$165.00", sizes: ["S", "M", "L", "XL"], gallery: ["7e30cc2c199ecefe", "2f4154ed7507563f", "18a2cc3f9d7b9e31", "4a3d2f3c0204eb96"], description: "Clear, straight-sided glass designed to keep candlelight in view. Its simple silhouette works on a dining table, mantel, or beside the bed.", details: ["Hand-finished using traditional glassworking techniques.", "Material: Glass", "Includes one pillar candle.", "Clean with a soft cloth and mild soap."] },
@@ -31,6 +43,13 @@ const productCatalog = {
   "barre-organic-platter": { price: "$185.00", sizes: ["CLEAR", "SMOKE"], gallery: ["2fd505e4f4d7e989", "f0708ec291891aed", "d3947d37a8a9035c"], description: "A generous serving piece with a softly organic profile, made for fruit, shared dishes, and the centre of a well-used table.", details: ["Hand-finished serving form.", "Material: Glass", "Food safe.", "Hand wash recommended."] },
   "crackle-pumpkin": { price: "$95.00", sizes: ["ONE SIZE"], gallery: ["0f63bbdacc5b6c1b", "755670267b45bb05", "1afa6a0dbb1c99c0"], description: "A hand-finished seasonal object that catches the warmth of a table set for gathering and makes a considered gift.", details: ["Hand-finished glass object.", "Material: Glass", "Designed for decorative use.", "Each piece is unique."] },
   "cavendish-candlestick": { price: "$110.00", sizes: ["M", "L"], gallery: ["7e30cc2c199ecefe", "4a3d2f3c0204eb96", "0ed1ba2b25791f04"], description: "A tall, clear glass form designed for candlelight. Its proportions make a quiet focal point on a mantel or dining table.", details: ["Hand-finished using traditional glassworking techniques.", "Material: Glass", "Fits a standard pillar candle.", "Clean with a soft cloth and mild soap."] },
+  "madison-stemware-pair": { price: "$130.00", sizes: ["SET OF 2"], gallery: ["2e95cc14fdaa5452", "fe733b430489c0da", "2f4154ed7507563f"], description: "A balanced pair of hand-finished stems for wines, shared meals, and the small rituals of setting the table.", details: ["Set of two stemmed glasses.", "Material: Glass", "Hand wash recommended.", "Each piece is hand-finished."] },
+  "greenwich-cocktail-glass": { price: "$85.00", sizes: ["SET OF 2"], gallery: ["18a2cc3f9d7b9e31", "2f4154ed7507563f", "fe733b430489c0da"], description: "A refined cocktail glass with a clear, enduring shape for everything shaken, stirred, and shared.", details: ["Set of two cocktail glasses.", "Material: Glass", "Hand wash recommended.", "Made for everyday pours and gatherings."] },
+  "woodstock-globe-vase": { price: "$145.00", sizes: ["S", "L"], gallery: ["d3947d37a8a9035c", "f0708ec291891aed", "0f63bbdacc5b6c1b"], description: "A softly rounded vessel for branches, garden stems, and arrangements that bring shape to a room.", details: ["Hand-finished glass vase.", "Material: Glass", "Designed for fresh or dried arrangements.", "Clean with a soft cloth and mild soap."] },
+  "candlelight-hurricane": { price: "$125.00", sizes: ["S", "M", "L"], gallery: ["4a3d2f3c0204eb96", "7e30cc2c199ecefe", "0ed1ba2b25791f04"], description: "A clear glass hurricane that lets candlelight settle warmly across the table and surrounding room.", details: ["Hand-finished using traditional glassworking techniques.", "Material: Glass", "Fits a standard pillar candle.", "Clean with a soft cloth and mild soap."] },
+  "evergreen-tree": { price: "$90.00", sizes: ["S", "M", "L"], gallery: ["321172c50d62fef5", "0f63bbdacc5b6c1b", "755670267b45bb05"], description: "A seasonal glass object designed to return to the table each year, bringing a gentle sculptural note to gatherings.", details: ["Hand-finished seasonal object.", "Material: Glass", "Designed for decorative use.", "Each piece is unique."] },
+  "barware-tumbler-set": { price: "$110.00", sizes: ["SET OF 2"], gallery: ["c277079ed4e9e689", "18a2cc3f9d7b9e31", "2f4154ed7507563f"], description: "A pair of versatile tumblers made for water, aperitifs, and the easy rhythm of an evening at home.", details: ["Set of two tumblers.", "Material: Glass", "Hand wash recommended.", "Made for everyday use."] },
+  "barre-serving-bowl": { price: "$165.00", sizes: ["S", "L"], gallery: ["f0708ec291891aed", "2fd505e4f4d7e989", "d3947d37a8a9035c"], description: "A generously proportioned glass bowl for fruit, shared dishes, and the centre of an everyday table.", details: ["Hand-finished serving bowl.", "Material: Glass", "Food safe.", "Hand wash recommended."] },
 };
 
 const menuGroups = {
@@ -58,8 +77,8 @@ const menuGroups = {
 };
 
 const categoryCards = [
-  ["Fall Decor", "92036cfcb284ad1a", "fall-decor"], ["Stemware", "2e95cc14fdaa5452", "stemware"], ["Cocktail", "18a2cc3f9d7b9e31", "cocktail-glasses"], ["Vessels", "d3947d37a8a9035c", "vases"],
-  ["Candlelight", "4a3d2f3c0204eb96", "candlelight"], ["Seasonal", "321172c50d62fef5", "trees"], ["Barware", "c277079ed4e9e689", "drinkware"], ["Bowls", "f0708ec291891aed", "bowls"],
+  ["Fall Decor", "92036cfcb284ad1a", "pumpkin-twist"], ["Stemware", "2e95cc14fdaa5452", "madison-stemware-pair"], ["Cocktail", "18a2cc3f9d7b9e31", "greenwich-cocktail-glass"], ["Vessels", "d3947d37a8a9035c", "woodstock-globe-vase"],
+  ["Candlelight", "4a3d2f3c0204eb96", "candlelight-hurricane"], ["Seasonal", "321172c50d62fef5", "evergreen-tree"], ["Barware", "c277079ed4e9e689", "barware-tumbler-set"], ["Bowls", "f0708ec291891aed", "barre-serving-bowl"],
 ];
 
 const collectionPages = {
@@ -106,7 +125,7 @@ function CollectionPage({ slug }) {
 }
 
 function ProductPage({ slug }) {
-  const product = products.find((item) => item.slug === slug);
+  const product = allProducts.find((item) => item.slug === slug);
   const catalog = productCatalog[slug];
   const [selectedImage, setSelectedImage] = useState(catalog?.gallery?.[0]);
   const [selectedSize, setSelectedSize] = useState(catalog?.sizes?.[0]);
@@ -181,7 +200,7 @@ function Storefront() {
       <section className="hero"><picture><source media="(max-width: 700px)" srcSet={asset("353f47e500aff43d")} /><img src={asset("1afa6a0dbb1c99c0")} alt="A warmly laid table with hand-finished glass objects" /></picture><div className="hero-copy"><p>Fall Gathering &amp; Gifting</p><h1>A Season Worth<br />Getting Ready For</h1><a className="button button-light" href={sitePath("/collections/fall-gathering-and-gifting/")}>SHOP NOW</a></div></section>
       <section className="collection-section" id="collection"><div className="section-heading"><h2>For the table, the bar, and the home</h2><div className="carousel-arrows"><button disabled={productIndex === 0} onClick={() => setProductIndex((value) => Math.max(0, value - 1))} aria-label="Previous products"><ArrowLeft size={23} /></button><button disabled={productIndex === 2} onClick={() => setProductIndex((value) => Math.min(2, value + 1))} aria-label="Next products"><ArrowRight size={23} /></button></div></div><div className="product-window"><div className="product-track" style={{ "--product-index": productIndex }}>{products.map((product) => <article className="product-card" key={product.id}><div className="product-image"><span className="product-badge">{product.badge}</span><button className="like-button" aria-label={`Save ${product.name}`} onClick={() => toggleLike(product.id)}><Heart size={22} fill={likes.includes(product.id) ? "currentColor" : "none"} /></button><a href={sitePath(`/products/${product.slug}/`)} aria-label={`View ${product.name} details`}><img src={asset(product.image)} alt={product.name} /></a><button className="quick-add" onClick={() => addToCart(product.id)} aria-label={`Add ${product.name} to bag`}><Plus size={23} /></button></div><h3><a href={sitePath(`/products/${product.slug}/`)}>{product.name}</a></h3><p>{product.note}</p><a className="text-button" href={sitePath(`/products/${product.slug}/`)}>VIEW DETAILS</a></article>)}</div></div><a className="underlined-link" href={sitePath("/collections/fall-gathering-and-gifting/")}>VIEW ALL OBJECTS</a></section>
       <section className="story-pairs" id="about"><article><img src={asset("755670267b45bb05")} alt="Hand-finished clear glass object" /><div><h2>Fall Decor</h2><p>Warm tones, organic forms, and handmade details that set the season before it arrives.</p><a className="button button-outline" href={sitePath("/collections/fall-decor/")}>SHOP NOW</a></div></article><article><img src={asset("2f4154ed7507563f")} alt="Cocktail glasses on a serving tray" /><div><h2>Drinkware</h2><p>Glasses for everyday pours and seasonal gatherings, including our new vintage-inspired Dorset Collection.</p><a className="button button-outline" href={sitePath("/collections/drinkware/")}>SHOP NOW</a></div></article></section>
-      <section className="category-section" id="category"><h2>Shop by category</h2><div className="category-grid">{categoryCards.map(([title, image, slug]) => <a className="category-card" href={sitePath(`/collections/${slug}/`)} key={title}><img src={asset(image)} alt="" /><span>SHOP NOW</span><strong>{title}</strong></a>)}</div></section>
+      <section className="category-section" id="category"><h2>Shop by category</h2><div className="category-grid">{categoryCards.map(([title, image, slug]) => <a className="category-card" href={sitePath(`/products/${slug}/`)} key={title} aria-label={`View ${title} product details`}><img src={asset(image)} alt="" /><span>SHOP NOW</span><strong>{title}</strong></a>)}</div></section>
       <section className="contact-feature" id="contact"><img src={asset("0ed1ba2b25791f04")} alt="Autumn landscape and waterside building" /><div className="contact-overlay"><p>KEBEDA TRADING LIMITED</p><h2>Let's make space for the next good thing.</h2><div className="contact-details"><a href="tel:+85255096464">+852 55096464</a><address>WORKSHOP 251 ON 3RD FLOOR,<br />JOIN-IN HANG SING CENTRE,<br />NOS. 2-16 KWAI FUNG CRESCENT, KWAI CHUNG<br />HONG KONG</address></div></div></section>
     </main>
     <footer className="site-footer"><div className="newsletter"><h2>Stay in the loop</h2><p>Occasional notes on new objects, collections, and company news.</p><form onSubmit={(event) => { event.preventDefault(); setNewsletterStatus("Thank you — you're on the list."); }}><label className="sr-only" htmlFor="newsletter-email">Email address</label><input id="newsletter-email" type="email" required placeholder="EMAIL ADDRESS" /><button type="submit">SIGN UP</button></form>{newsletterStatus && <p className="status-message" role="status">{newsletterStatus}</p>}</div><div className="footer-grid"><div><Wordmark /><p className="footer-company">KEBEDA TRADING LIMITED</p></div><div><h3>COLLECTION</h3><a href={sitePath("/collections/new-arrivals/")}>New arrivals</a><a href={sitePath("/collections/bowls/")}>Table objects</a><a href={sitePath("/collections/drinkware/")}>Drinkware</a><a href="#category">All categories</a></div><div><h3>COMPANY</h3><a href="#about">About us</a><a href="#contact">Contact</a><a href="tel:+85255096464">Call us</a></div><div><h3>ADDRESS</h3><p>WORKSHOP 251 ON 3RD FLOOR,<br />JOIN-IN HANG SING CENTRE,<br />NOS. 2-16 KWAI FUNG CRESCENT, KWAI CHUNG<br />HONG KONG</p></div></div><div className="footer-base"><span>© 2026 KEBEDA TRADING LIMITED</span><span>PRIVACY · TERMS</span></div></footer>
@@ -194,6 +213,6 @@ export function App() {
   const collectionSlug = currentCollectionSlug();
   const productSlug = currentProductSlug();
   if (collectionSlug && collectionPages[collectionSlug]) return <CollectionPage slug={collectionSlug} />;
-  if (productSlug && products.some((product) => product.slug === productSlug)) return <ProductPage slug={productSlug} />;
+  if (productSlug && allProducts.some((product) => product.slug === productSlug)) return <ProductPage slug={productSlug} />;
   return <Storefront />;
 }

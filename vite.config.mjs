@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const collectionEntries = ["new-arrivals", "fall-gathering-and-gifting", "fall-decor", "drinkware", "stemware", "cocktail-glasses", "vases", "candlelight", "trees", "bowls"];
-const productEntries = ["pumpkin-twist", "nantucket-hurricane", "dorset-coupe-in-gift-box-set-of-2", "barre-organic-platter", "crackle-pumpkin", "cavendish-candlestick"];
+const productEntries = ["pumpkin-twist", "nantucket-hurricane", "dorset-coupe-in-gift-box-set-of-2", "barre-organic-platter", "crackle-pumpkin", "cavendish-candlestick", "madison-stemware-pair", "greenwich-cocktail-glass", "woodstock-globe-vase", "candlelight-hurricane", "evergreen-tree", "barware-tumbler-set", "barre-serving-bowl"];
 
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? "/simon/" : "/",
